@@ -1,0 +1,23 @@
+{
+  "name": "@unimolecule/document",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "author": "i7eo",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "format": "prettier \"./**/*.{js,ts,jsx,tsx,md,json,jsonc}\" --write",
+    "lint": "TIMING=1 eslint \"./**/*.{js,jsx,ts,tsx,md,json,jsonc}\" --fix",
+    "clean": "run-p \"clean:**\"",
+    "clean:cache": "rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@unconfig/ts-config": "catalog:dx",
+    "tsdown": "catalog:dx",
+    "typescript": "catalog:",
+    "vitest": "catalog:test"
+  }
+}

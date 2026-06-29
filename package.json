@@ -1,0 +1,55 @@
+{
+  "name": "@unimolecule/core",
+  "type": "module",
+  "private": true,
+  "author": "i7eo",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "simple-git-hooks",
+    "build": "pnpm -F \"*\" build",
+    "test": "pnpm -F \"*\" test",
+    "format": "pnpm -F \"*\" format",
+    "lint": "pnpm -F \"*\" lint",
+    "clean": "run-s \"clean:**\"",
+    "clean:workspace": "pnpm -F \"*\" clean",
+    "clean:cache": "rimraf pnpm-lock.yaml && rimraf node_modules",
+    "commit": "czg",
+    "upgrade:pkgs": "pnpm update -r --interactive --latest",
+    "changeset:generate": "changeset",
+    "changeset:changelog": "tsx ./scripts/changesets/changelog-generate.ts",
+    "changeset:version": "changeset version && pnpm changeset:changelog",
+    "changeset:publish": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "catalog:dx",
+    "@commitlint/cli": "catalog:dx",
+    "@commitlint/config-conventional": "catalog:dx",
+    "@commitlint/types": "catalog:dx",
+    "@manypkg/get-packages": "catalog:dx",
+    "@sxzz/eslint-config": "catalog:dx",
+    "@types/node": "catalog:",
+    "@unconfig/changeset-workflow": "catalog:dx",
+    "@unconfig/ts-config": "catalog:dx",
+    "@unimolecule/utils": "workspace:*",
+    "czg": "catalog:dx",
+    "eslint": "catalog:dx",
+    "lint-staged": "catalog:dx",
+    "npm-run-all2": "catalog:",
+    "prettier": "catalog:dx",
+    "rimraf": "catalog:",
+    "simple-git-hooks": "catalog:dx",
+    "tsx": "catalog:dx",
+    "typescript": "catalog:"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "NODE_OPTIONS=\"--import tsx\" pnpm exec lint-staged --concurrent false",
+    "commit-msg": "NODE_OPTIONS=\"--import tsx\" pnpm exec commitlint --edit $1"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11.0.0",
+      "onFail": "download"
+    }
+  }
+}

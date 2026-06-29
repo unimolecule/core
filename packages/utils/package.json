@@ -1,0 +1,97 @@
+{
+  "name": "@unimolecule/utils",
+  "type": "module",
+  "version": "0.0.0",
+  "author": "i7eo",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./node": {
+      "types": "./src/node/index.ts",
+      "import": "./src/node/index.ts",
+      "require": "./src/node/index.ts"
+    },
+    "./node/*": {
+      "types": "./src/node/*.ts",
+      "import": "./src/node/*.ts",
+      "require": "./src/node/*.ts"
+    },
+    "./web": {
+      "types": "./src/web/index.ts",
+      "import": "./src/web/index.ts",
+      "require": "./src/web/index.ts"
+    },
+    "./web/*": {
+      "types": "./src/web/*.ts",
+      "import": "./src/web/*.ts",
+      "require": "./src/web/*.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.mts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.mts",
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      },
+      "./node": {
+        "types": "./dist/node/index.d.mts",
+        "import": "./dist/node/index.mjs",
+        "require": "./dist/node/index.cjs"
+      },
+      "./node/*": {
+        "types": "./dist/node/*.d.mts",
+        "import": "./dist/node/*.mjs",
+        "require": "./dist/node/*.cjs"
+      },
+      "./web": {
+        "types": "./dist/web/index.d.mts",
+        "import": "./dist/web/index.mjs",
+        "require": "./dist/web/index.cjs"
+      },
+      "./web/*": {
+        "types": "./dist/web/*.d.mts",
+        "import": "./dist/web/*.mjs",
+        "require": "./dist/web/*.cjs"
+      },
+      "./package.json": "./package.json"
+    }
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development tsdown --config ./build.config.ts",
+    "build": "tsdown --config ./build.config.ts",
+    "test": "vitest run",
+    "format": "prettier \"./**/*.{js,ts,jsx,tsx,md,json,jsonc}\" --write",
+    "lint": "TIMING=1 eslint \"./**/*.{js,jsx,ts,tsx,md,json,jsonc}\" --fix",
+    "clean": "run-p \"clean:**\"",
+    "clean:cache": "rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "catalog:dx",
+    "dayjs": "catalog:",
+    "es-toolkit": "^1.49.0",
+    "nanoid": "^5.1.16"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@unconfig/ts-config": "catalog:dx",
+    "jsdom": "catalog:test",
+    "tsdown": "catalog:dx",
+    "typescript": "catalog:",
+    "vitest": "catalog:test"
+  }
+}

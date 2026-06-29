@@ -1,0 +1,70 @@
+{
+  "name": "@unimolecule/canon",
+  "type": "module",
+  "version": "0.0.0",
+  "author": "i7eo",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./http": {
+      "types": "./src/http/index.ts",
+      "import": "./src/http/index.ts",
+      "require": "./src/http/index.ts"
+    },
+    "./http-status-codes": {
+      "types": "./src/http/status-codes.ts",
+      "import": "./src/http/status-codes.ts",
+      "require": "./src/http/status-codes.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.mts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.mts",
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      },
+      "./http": {
+        "types": "./dist/http/index.d.mts",
+        "import": "./dist/http/index.mjs",
+        "require": "./dist/http/index.cjs"
+      },
+      "./http-status-codes": {
+        "types": "./dist/http/http-status-codes.d.mts",
+        "import": "./dist/http/http-status-codes.mjs",
+        "require": "./dist/http/http-status-codes.cjs"
+      },
+      "./package.json": "./package.json"
+    }
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development tsdown --config ./build.config.ts",
+    "build": "tsdown --config ./build.config.ts",
+    "test": "vitest run",
+    "format": "prettier \"./**/*.{js,ts,jsx,tsx,md,json,jsonc}\" --write",
+    "lint": "TIMING=1 eslint \"./**/*.{js,jsx,ts,tsx,md,json,jsonc}\" --fix",
+    "clean": "run-p \"clean:**\"",
+    "clean:cache": "rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@unconfig/ts-config": "catalog:dx",
+    "tsdown": "catalog:dx",
+    "typescript": "catalog:",
+    "vitest": "catalog:test"
+  }
+}
