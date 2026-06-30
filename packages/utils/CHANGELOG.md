@@ -1,5 +1,11 @@
 # @unimolecule/utils
 
+## 0.1.0
+
+### Minor Changes
+
+- [`4320245`](https://github.com/unimolecule/core/commit/43202456ab1bcd4e3793a27c9e1fbda78c77c5b3) Thanks [@i7eo](https://github.com/i7eo)! - Generate a unified changelog
+
 ## 0.0.1
 
 ### Patch Changes
