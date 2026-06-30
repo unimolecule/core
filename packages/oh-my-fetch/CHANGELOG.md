@@ -1,5 +1,15 @@
 # @unimolecule/oh-my-fetch
 
+## 0.1.1
+
+### Patch Changes
+
+- [`ba078d1`](https://github.com/unimolecule/core/commit/ba078d144cbfffa8f16622085ca0bdf020f2ccd2) Thanks [@i7eo](https://github.com/i7eo)! - Modify the bundler's config loader from native node to tsx.
+
+- Updated dependencies [[`ba078d1`](https://github.com/unimolecule/core/commit/ba078d144cbfffa8f16622085ca0bdf020f2ccd2)]:
+  - @unimolecule/canon@0.1.1
+  - @unimolecule/utils@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
