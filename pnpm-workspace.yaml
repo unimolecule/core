@@ -39,10 +39,10 @@ catalogs:
     "@commitlint/types": "^21.1.0"
     "czg": "^1.13.1"
     "lint-staged": "^17.0.8"
-    "prettier": "^3.9.0"
+    "prettier": "^3.9.2"
     "simple-git-hooks": "^2.13.1"
     "@unconfig/ts-config": "^0.1.11"
-    "@unconfig/changeset-workflow": "^0.0.2"
+    "@unconfig/changeset-workflow": "^0.0.3"
     "@changesets/changelog-github": "^0.7.0"
     "tsdown": "^0.22.3"
     "tsx": "^4.22.4"
@@ -59,5 +59,5 @@ allowBuilds:
   simple-git-hooks: true
 
 minimumReleaseAgeExclude:
-  - "@unconfig/changeset-workflow@0.0.2"
+  - "@unconfig/changeset-workflow@0.0.2 || 0.0.3"
   - "@unconfig/ts-config@0.1.11"

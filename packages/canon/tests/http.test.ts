@@ -6,7 +6,6 @@ import {
   createError,
   createPagePagination,
   createResponse,
-  HTTP_STATUS_CODES,
   RESPONSE_ERROR_CODE,
   RESPONSE_ERROR_MESSAGE,
   RESPONSE_ERROR_OK,
@@ -14,6 +13,7 @@ import {
   RESPONSE_SUCCESS_MESSAGE,
   RESPONSE_SUCCESS_OK,
 } from "../src/http";
+import { HTTP_STATUS_CODES } from "../src/http/status-codes";
 
 describe("HTTP contracts", () => {
   it("creates default success response envelopes", () => {

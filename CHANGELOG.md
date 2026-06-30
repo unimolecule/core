@@ -26,8 +26,6 @@ section: "introduction"
 
 - Modify the bundler's config loader from native node to tsx.
 
-## 2026-06-30
-
 **@unimolecule/canon** `v0.1.0`
 
 - Generate a unified changelog
