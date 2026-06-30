@@ -17,7 +17,7 @@
     "upgrade:pkgs": "pnpm update -r --interactive --latest",
     "changeset:generate": "changeset",
     "changeset:changelog": "tsx ./scripts/changesets/changelog-generate.ts",
-    "changeset:version": "changeset version && pnpm changeset:changelog",
+    "changeset:version": "pnpm changeset:changelog && changeset version",
     "changeset:publish": "changeset publish"
   },
   "devDependencies": {
