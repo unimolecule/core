@@ -44,7 +44,7 @@ jobs:
         run: git config --global user.name $(git log -n 1 --pretty=format:%an)
 
       - name: Configure npm token
-        run: npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        run: pnpm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
 
       - name: Create release PR or publish
         uses: changesets/action@v1
