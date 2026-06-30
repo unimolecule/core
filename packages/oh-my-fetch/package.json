@@ -1,7 +1,7 @@
 {
   "name": "@unimolecule/oh-my-fetch",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "i7eo",
   "license": "MIT",
   "exports": {
