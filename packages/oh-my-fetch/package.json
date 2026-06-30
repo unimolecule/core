@@ -40,30 +40,10 @@
       "import": "./src/lifecycle/dedupe.ts",
       "require": "./src/lifecycle/dedupe.ts"
     },
-    "./plugins/business-status": {
-      "types": "./src/plugins/business-status.ts",
-      "import": "./src/plugins/business-status.ts",
-      "require": "./src/plugins/business-status.ts"
-    },
-    "./plugins/error-reporter": {
-      "types": "./src/plugins/error-reporter.ts",
-      "import": "./src/plugins/error-reporter.ts",
-      "require": "./src/plugins/error-reporter.ts"
-    },
-    "./plugins/request-format": {
-      "types": "./src/plugins/request-format.ts",
-      "import": "./src/plugins/request-format.ts",
-      "require": "./src/plugins/request-format.ts"
-    },
-    "./plugins/validation": {
-      "types": "./src/plugins/validation.ts",
-      "import": "./src/plugins/validation.ts",
-      "require": "./src/plugins/validation.ts"
-    },
-    "./http-status-codes": {
-      "types": "./src/http-status-codes.ts",
-      "import": "./src/http-status-codes.ts",
-      "require": "./src/http-status-codes.ts"
+    "./plugins/*": {
+      "types": "./src/plugins/*.ts",
+      "import": "./src/plugins/*.ts",
+      "require": "./src/plugins/*.ts"
     },
     "./package.json": "./package.json"
   },
@@ -112,37 +92,17 @@
         "import": "./dist/lifecycle/dedupe.mjs",
         "require": "./dist/lifecycle/dedupe.cjs"
       },
-      "./plugins/business-status": {
-        "types": "./dist/plugins/business-status.d.mts",
-        "import": "./dist/plugins/business-status.mjs",
-        "require": "./dist/plugins/business-status.cjs"
-      },
-      "./plugins/error-reporter": {
-        "types": "./dist/plugins/error-reporter.d.mts",
-        "import": "./dist/plugins/error-reporter.mjs",
-        "require": "./dist/plugins/error-reporter.cjs"
-      },
-      "./plugins/request-format": {
-        "types": "./dist/plugins/request-format.d.mts",
-        "import": "./dist/plugins/request-format.mjs",
-        "require": "./dist/plugins/request-format.cjs"
-      },
-      "./plugins/validation": {
-        "types": "./dist/plugins/validation.d.mts",
-        "import": "./dist/plugins/validation.mjs",
-        "require": "./dist/plugins/validation.cjs"
-      },
-      "./http-status-codes": {
-        "types": "./dist/http-status-codes.d.mts",
-        "import": "./dist/http-status-codes.mjs",
-        "require": "./dist/http-status-codes.cjs"
+      "./plugins/*": {
+        "types": "./dist/plugins/*.d.mts",
+        "import": "./dist/plugins/*.mjs",
+        "require": "./dist/plugins/*.cjs"
       },
       "./package.json": "./package.json"
     }
   },
   "scripts": {
-    "dev": "NODE_ENV=development tsdown --config ./build.config.ts",
-    "build": "tsdown --config ./build.config.ts",
+    "dev": "NODE_ENV=development NODE_OPTIONS=\"--import tsx\" tsdown --config ./build.config.ts",
+    "build": "NODE_OPTIONS=\"--import tsx\" tsdown --config ./build.config.ts",
     "test": "vitest run",
     "format": "prettier \"./**/*.{js,ts,jsx,tsx,md,json,jsonc}\" --write",
     "lint": "TIMING=1 eslint \"./**/*.{js,jsx,ts,tsx,md,json,jsonc}\" --fix",

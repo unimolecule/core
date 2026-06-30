@@ -9,7 +9,7 @@
     "declarationMap": true,
     "emitDeclarationOnly": true
   },
-  "include": ["./src/node/**/*", "./src/*"],
+  "include": ["./src/node/**/*", "./src/*", "**/*.config.ts"],
   "exclude": [
     "**/__tests__/**",
     "**/tests/**",

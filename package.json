@@ -13,7 +13,7 @@
     "clean": "run-s \"clean:**\"",
     "clean:workspace": "pnpm -F \"*\" clean",
     "clean:cache": "rimraf pnpm-lock.yaml && rimraf node_modules",
-    "commit": "czg",
+    "commit": "NODE_OPTIONS=\"--import tsx\" czg",
     "upgrade:pkgs": "pnpm update -r --interactive --latest",
     "changeset:generate": "changeset",
     "changeset:changelog": "tsx ./scripts/changesets/changelog-generate.ts",

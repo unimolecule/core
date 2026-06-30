@@ -9,12 +9,7 @@
     "declarationMap": true,
     "emitDeclarationOnly": true
   },
-  "include": [
-    "./src/*.ts",
-    "./**/typings/**/*",
-    "./**/*.json",
-    "**/*.config.ts"
-  ],
+  "include": ["./src/*.ts", "./**/typings/**/*", "./**/*.json"],
   "exclude": [
     "**/__tests__/**",
     "**/tests/**",

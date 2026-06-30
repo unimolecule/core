@@ -43,16 +43,16 @@
         "require": "./dist/http/index.cjs"
       },
       "./http-status-codes": {
-        "types": "./dist/http/http-status-codes.d.mts",
-        "import": "./dist/http/http-status-codes.mjs",
-        "require": "./dist/http/http-status-codes.cjs"
+        "types": "./dist/http/status-codes.d.mts",
+        "import": "./dist/http/status-codes.mjs",
+        "require": "./dist/http/status-codes.cjs"
       },
       "./package.json": "./package.json"
     }
   },
   "scripts": {
-    "dev": "NODE_ENV=development tsdown --config ./build.config.ts",
-    "build": "tsdown --config ./build.config.ts",
+    "dev": "NODE_ENV=development NODE_OPTIONS=\"--import tsx\" tsdown --config ./build.config.ts",
+    "build": "NODE_OPTIONS=\"--import tsx\" tsdown --config ./build.config.ts",
     "test": "vitest run",
     "format": "prettier \"./**/*.{js,ts,jsx,tsx,md,json,jsonc}\" --write",
     "lint": "TIMING=1 eslint \"./**/*.{js,jsx,ts,tsx,md,json,jsonc}\" --fix",

@@ -1,5 +1,6 @@
 import process from "node:process";
 import { defineConfig } from "tsdown";
+import { outputEntryBuilder } from "./src/node/output-entry-builder";
 
 export default defineConfig([
   {
@@ -12,7 +13,7 @@ export default defineConfig([
     shims: true,
   },
   {
-    entry: ["./src/node/index.ts"],
+    entry: outputEntryBuilder("./src/node"),
     format: ["esm", "cjs"],
     platform: "node",
     dts: true,
@@ -23,7 +24,7 @@ export default defineConfig([
     clean: false,
   },
   {
-    entry: ["./src/web/index.ts"],
+    entry: outputEntryBuilder("./src/web"),
     format: ["esm", "cjs"],
     platform: "browser",
     dts: true,
