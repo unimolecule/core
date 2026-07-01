@@ -1,5 +1,11 @@
 # @unimolecule/oh-my-fetch
 
+## 0.1.4
+
+### Patch Changes
+
+- [`7d50bf3`](https://github.com/unimolecule/core/commit/7d50bf3ee17b6ba46c266bc4a3e35d1f34030f54) Thanks [@i7eo](https://github.com/i7eo)! - change status-codes import path
+
 ## 0.1.3
 
 ### Patch Changes

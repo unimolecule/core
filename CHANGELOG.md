@@ -14,6 +14,10 @@ section: "introduction"
 
 ## 2026-07-01
 
+**@unimolecule/oh-my-fetch** `v0.1.4`
+
+- change status-codes import path
+
 **@unimolecule/canon** `v0.1.3`
 
 - generate d.ts for status-codes
