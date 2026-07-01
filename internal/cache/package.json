@@ -1,7 +1,8 @@
 {
-  "name": "@unimolecule/canon",
+  "name": "@unimolecule/cache",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.0.0",
+  "private": true,
   "author": "i7eo",
   "license": "MIT",
   "exports": {
@@ -9,11 +10,6 @@
       "types": "./src/index.ts",
       "import": "./src/index.ts",
       "require": "./src/index.ts"
-    },
-    "./http": {
-      "types": "./src/http/index.ts",
-      "import": "./src/http/index.ts",
-      "require": "./src/http/index.ts"
     },
     "./package.json": "./package.json"
   },
@@ -32,11 +28,6 @@
         "import": "./dist/index.mjs",
         "require": "./dist/index.cjs"
       },
-      "./http": {
-        "types": "./dist/http/index.d.mts",
-        "import": "./dist/http/index.mjs",
-        "require": "./dist/http/index.cjs"
-      },
       "./package.json": "./package.json"
     }
   },
@@ -49,6 +40,10 @@
     "clean": "run-p \"clean:**\"",
     "clean:cache": "rimraf dist",
     "clean:deps": "rimraf node_modules"
+  },
+  "dependencies": {
+    "@unimolecule/utils": "workspace:*",
+    "lru-cache": "^11.5.1"
   },
   "devDependencies": {
     "@types/node": "catalog:",

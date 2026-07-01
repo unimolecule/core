@@ -1,5 +1,6 @@
 packages:
   - "apps/**"
+  - "internal/**"
   - "packages/**"
 
 nodeVersion: "26.2.0"
