@@ -1,5 +1,11 @@
 # @unimolecule/utils
 
+## 0.1.2
+
+### Patch Changes
+
+- [`bb74320`](https://github.com/unimolecule/core/commit/bb7432071d7940b9388d32766170046c5124451e) Thanks [@i7eo](https://github.com/i7eo)! - use node shims in node-only bundler
+
 ## 0.1.1
 
 ### Patch Changes
