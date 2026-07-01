@@ -1,4 +1,4 @@
-import type { HTTP_STATUS_CODES } from "@unimolecule/canon/http-status-codes";
+import type { HTTP_STATUS_CODES } from "@unimolecule/canon/http";
 
 export type KnownStatusCode =
   | typeof HTTP_STATUS_CODES.BAD_REQUEST.code

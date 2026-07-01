@@ -1,4 +1,4 @@
-import { HTTP_STATUS_CODES } from "@unimolecule/canon/http-status-codes";
+import { HTTP_STATUS_CODES } from "@unimolecule/canon/http";
 import type { HttpMethod, RequestBehavior } from "../utils/types";
 import type { RetryOptions } from "ky";
 

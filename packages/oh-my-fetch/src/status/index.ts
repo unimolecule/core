@@ -1,4 +1,4 @@
-import { HTTP_STATUS_CODES } from "@unimolecule/canon/http-status-codes";
+import { HTTP_STATUS_CODES } from "@unimolecule/canon/http";
 import { STATUS_MESSAGE_BY_CODE } from "./constants";
 import type { KnownStatusCode } from "./types";
 

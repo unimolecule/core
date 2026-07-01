@@ -1,4 +1,4 @@
-import { HTTP_STATUS_CODES } from "@unimolecule/canon/http-status-codes";
+import { HTTP_STATUS_CODES } from "@unimolecule/canon/http";
 
 export const VALIDATION_ERROR_CODE =
   HTTP_STATUS_CODES.UNPROCESSABLE_ENTITY.code;
