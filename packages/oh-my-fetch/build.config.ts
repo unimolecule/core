@@ -10,5 +10,4 @@ export default defineConfig({
   tsconfig: "./tsconfig.json",
   unbundle: true,
   watch: process.env.NODE_ENV === "development",
-  shims: true,
 });

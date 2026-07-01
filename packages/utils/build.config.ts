@@ -10,7 +10,6 @@ export default defineConfig([
     dts: true,
     tsconfig: "./tsconfig.basic.json",
     watch: process.env.NODE_ENV === "development",
-    shims: true,
   },
   {
     entry: outputEntryBuilder("./src/node"),

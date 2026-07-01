@@ -9,7 +9,6 @@ export default defineConfig([
     dts: true,
     tsconfig: "./tsconfig.json",
     watch: process.env.NODE_ENV === "development",
-    shims: true,
   },
   {
     entry: ["./src/http/index.ts"],
@@ -20,7 +19,6 @@ export default defineConfig([
     outDir: "dist/http",
     unbundle: true,
     watch: process.env.NODE_ENV === "development",
-    shims: true,
     clean: false,
   },
 ]);
