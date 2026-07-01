@@ -14,6 +14,10 @@ section: "introduction"
 
 ## 2026-07-01
 
+**@unimolecule/canon** `v0.1.3`
+
+- generate d.ts for status-codes
+
 **@unimolecule/canon** `v0.1.2`
 
 - use node shims in node-only bundler

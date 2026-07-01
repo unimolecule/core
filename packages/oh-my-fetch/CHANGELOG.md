@@ -1,5 +1,12 @@
 # @unimolecule/oh-my-fetch
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [[`9632607`](https://github.com/unimolecule/core/commit/9632607dc7f720271b419e096eb331ecdd0f9155)]:
+  - @unimolecule/canon@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes
