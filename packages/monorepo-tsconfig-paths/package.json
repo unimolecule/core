@@ -1,0 +1,106 @@
+{
+  "name": "@unimolecule/monorepo-tsconfig-paths",
+  "type": "module",
+  "version": "0.0.0",
+  "author": "i7eo",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./cli": {
+      "types": "./src/cli/index.ts",
+      "import": "./src/cli/index.ts",
+      "require": "./src/cli/index.ts"
+    },
+    "./core": {
+      "types": "./src/core/index.ts",
+      "import": "./src/core/index.ts",
+      "require": "./src/core/index.ts"
+    },
+    "./register": {
+      "types": "./src/node/register.ts",
+      "import": "./src/node/register.ts",
+      "require": "./src/node/register.ts"
+    },
+    "./loader": {
+      "types": "./src/node/loader.ts",
+      "import": "./src/node/loader.ts",
+      "require": "./src/node/loader.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "bin": {
+    "mrp": "./src/cli/index.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.mts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.mts",
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      },
+      "./cli": {
+        "types": "./dist/cli/index.d.mts",
+        "import": "./dist/cli/index.mjs",
+        "require": "./dist/cli/index.cjs"
+      },
+      "./core": {
+        "types": "./dist/core/index.d.mts",
+        "import": "./dist/core/index.mjs",
+        "require": "./dist/core/index.cjs"
+      },
+      "./register": {
+        "types": "./dist/node/register.d.mts",
+        "import": "./dist/node/register.mjs",
+        "require": "./dist/node/register.cjs"
+      },
+      "./loader": {
+        "types": "./dist/node/loader.d.mts",
+        "import": "./dist/node/loader.mjs",
+        "require": "./dist/node/loader.cjs"
+      },
+      "./package.json": "./package.json"
+    },
+    "bin": {
+      "mrp": "./dist/cli/index.mjs"
+    }
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development NODE_OPTIONS=\"--import tsx\" tsdown --config ./build.config.ts",
+    "build": "NODE_OPTIONS=\"--import tsx\" tsdown --config ./build.config.ts",
+    "test": "vitest run",
+    "typecheck": "run-p \"typecheck:**\"",
+    "typecheck:src": "tsc -p tsconfig.json --noEmit --pretty false",
+    "typecheck:test": "tsc -p tests/tsconfig.json --noEmit --pretty false",
+    "format": "prettier \"./**/*.{js,ts,jsx,tsx,md,json,jsonc}\" --write",
+    "lint": "TIMING=1 eslint \"./**/*.{js,jsx,ts,tsx,md,json,jsonc}\" --fix",
+    "clean": "run-p \"clean:**\"",
+    "clean:cache": "rimraf dist",
+    "clean:deps": "rimraf node_modules"
+  },
+  "dependencies": {
+    "@unimolecule/utils": "workspace:*",
+    "lru-cache": "^11.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@unconfig/ts-config": "catalog:dx",
+    "tsdown": "catalog:dx",
+    "typescript": "catalog:",
+    "vitest": "catalog:test"
+  }
+}

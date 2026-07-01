@@ -1,10 +1,12 @@
 # Unimolecule Core
 
+<p><strong>English</strong> | <a href="./README.zh-CN.md">Chinese</a></p>
+
 `@unimolecule/core` is a pnpm monorepo for shared TypeScript packages and
 documentation assets maintained by Unimolecule. The repository keeps reusable
-runtime-neutral utilities, HTTP contract primitives, and a Fetch client in
-separate package boundaries so applications can compose only the pieces they
-need.
+runtime-neutral utilities, HTTP contract primitives, a Fetch client, and a
+monorepo-aware tsconfig paths runtime resolver in separate package boundaries so
+applications can compose only the pieces they need.
 
 It is organized as a private workspace. Reusable libraries live under
 `packages/`, documentation content lives under `apps/`, and root scripts
@@ -19,17 +21,18 @@ These workspaces are private repository entry points or documentation targets.
 
 | Package                                    | Version | Description                                            |
 | ------------------------------------------ | ------- | ------------------------------------------------------ |
-| [`@unimolecule/document`](./apps/document) | `0.0.0` | Documentation content workspace for published changes. |
+| [`@unimolecule/document`](./apps/document) | `0.0.1` | Documentation content workspace for published changes. |
 
 ### Shared Packages
 
 These packages provide reusable TypeScript building blocks.
 
-| Package                                                     | Version | Description                                                                  |
-| ----------------------------------------------------------- | ------- | ---------------------------------------------------------------------------- |
-| [`@unimolecule/utils`](./packages/utils#readme)             | `0.0.0` | Runtime-neutral utilities plus explicit browser and Node helper entrypoints. |
-| [`@unimolecule/canon`](./packages/canon#readme)             | `0.0.0` | Shared contract primitives for HTTP status, response, error, and pagination. |
-| [`@unimolecule/oh-my-fetch`](./packages/oh-my-fetch#readme) | `0.0.0` | Fetch client built on `ky` with explicit plugins and subpath entrypoints.    |
+| Package                                                                             | Version | Description                                                                  |
+| ----------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------- |
+| [`@unimolecule/utils`](./packages/utils#readme)                                     | `0.1.2` | Runtime-neutral utilities plus explicit browser and Node helper entrypoints. |
+| [`@unimolecule/canon`](./packages/canon#readme)                                     | `0.1.3` | Shared contract primitives for HTTP status, response, error, and pagination. |
+| [`@unimolecule/oh-my-fetch`](./packages/oh-my-fetch#readme)                         | `0.1.3` | Fetch client built on `ky` with explicit plugins and subpath entrypoints.    |
+| [`@unimolecule/monorepo-tsconfig-paths`](./packages/monorepo-tsconfig-paths#readme) | `0.0.0` | Runtime resolver and wrapper CLI for monorepo-aware TypeScript path aliases. |
 
 ## Architecture
 
@@ -40,6 +43,10 @@ The dependency direction is intentionally one-way:
   -> @unimolecule/canon
   -> @unimolecule/oh-my-fetch
   -> apps / downstream application code
+
+@unimolecule/monorepo-tsconfig-paths
+  -> @unimolecule/utils
+  -> runtime wrappers / downstream tool commands
 ```
 
 `@unimolecule/utils` owns small runtime-neutral helpers and explicit
@@ -47,7 +54,9 @@ runtime-specific subpaths. `@unimolecule/canon` owns shared contract primitives
 without schema-library or framework adapters. `@unimolecule/oh-my-fetch`
 consumes those primitives where useful while keeping outbound request behavior,
 validation adapters, error normalization, JSON security, dedupe, and plugins in
-the client package.
+the client package. `@unimolecule/monorepo-tsconfig-paths` owns importer-aware
+runtime path alias resolution and wrapper surfaces without changing application
+source imports.
 
 ## Local Development
 
@@ -86,6 +95,7 @@ Prefer package-scoped commands for focused work:
 pnpm -F @unimolecule/utils test
 pnpm -F @unimolecule/canon build
 pnpm -F @unimolecule/oh-my-fetch test
+pnpm -F @unimolecule/monorepo-tsconfig-paths typecheck
 ```
 
 ## Documentation
@@ -96,9 +106,10 @@ details belong in the package README:
 - [`packages/utils/README.md`](./packages/utils/README.md)
 - [`packages/canon/README.md`](./packages/canon/README.md)
 - [`packages/oh-my-fetch/README.md`](./packages/oh-my-fetch/README.md)
+- [`packages/monorepo-tsconfig-paths/README.md`](./packages/monorepo-tsconfig-paths/README.md)
 
-When package behavior changes, keep the English and Chinese package README
-variants aligned.
+When package behavior changes, keep the English and Chinese README variants
+aligned.
 
 ## Release Notes
 
