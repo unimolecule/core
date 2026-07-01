@@ -14,6 +14,7 @@
 - `packages/utils`: Shared utility package with runtime-neutral root helpers and explicit `web` / `node` subpaths.
 - `packages/canon`: Shared contract primitives for HTTP status, response, error, and pagination shapes.
 - `packages/oh-my-fetch`: Fetch client built on `ky`, with explicit client, error, validation, JSON, dedupe, status, and plugin subpaths.
+- `packages/monorepo-tsconfig-paths`: Runtime resolver and wrapper CLI for monorepo-aware TypeScript `compilerOptions.paths` resolution.
 - `scripts/changesets`: Root tooling for changelog generation.
 
 ## Codex Surface Rules
@@ -36,6 +37,7 @@
 - Use `@unimolecule/utils` for reusable runtime-neutral helpers, JSON helpers, type guards, trees, timers, random values, dates, strings, and explicit browser or Node helpers.
 - Use `@unimolecule/canon` for shared HTTP contract primitives such as status constants, response envelopes, error envelopes, and pagination response shapes.
 - Use `@unimolecule/oh-my-fetch` for outbound HTTP client behavior, request/response parsing, validation adapters, normalized request errors, JSON security, dedupe, and optional plugins.
+- Use `@unimolecule/monorepo-tsconfig-paths` for monorepo-aware runtime TypeScript path alias resolution, wrapper commands, Node register/loader integration, and resolver diagnostics.
 - Keep schema factories, OpenAPI metadata, route handlers, business query parsing, and app-specific pagination policies in business packages or applications, not in `canon`.
 - When adding a package-owned concept, update package entrypoints, README examples, and nearby package guidance when needed.
 
@@ -45,6 +47,13 @@
 - Put stable constants in `constants.ts` or focused constant modules when they are part of a package API.
 - Keep one-off helpers close to their caller.
 - Export through package or folder `index.ts` files according to the existing package style.
+
+## Test TypeScript Projects
+
+- When a package has TypeScript tests, add test `tsconfig.json` files close to the owning `tests` boundary instead of widening publish/build tsconfigs to include tests.
+- Mirror the package's test layout: use `tests/tsconfig.json` for root/basic tests and add closer files such as `tests/node/tsconfig.json` or `tests/web/tsconfig.json` when Vitest projects or runtime-specific test folders exist.
+- Test tsconfigs should extend the matching package tsconfig (`tsconfig.basic.json`, `tsconfig.node.json`, `tsconfig.web.json`, or the package root tsconfig), set `noEmit: true`, disable declaration output, include the relevant tests and config files, and override inherited excludes that remove `tests`.
+- Keep test type projects out of publish declaration graphs; build tsconfigs should continue to describe source and public entrypoints, not test helpers.
 
 ## README And Docs
 

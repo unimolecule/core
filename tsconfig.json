@@ -3,6 +3,7 @@
     { "path": "./tsconfig.node.json" },
 
     { "path": "./packages/canon" },
+    { "path": "./packages/monorepo-tsconfig-paths" },
     { "path": "./packages/oh-my-fetch" },
     { "path": "./packages/utils" }
   ],

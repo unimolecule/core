@@ -407,11 +407,11 @@ importers:
         specifier: catalog:test
         version: 4.1.9(@types/node@26.0.1)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.22.4)(yaml@2.9.0))
 
-  internal/cache:
+  packages/cache:
     dependencies:
       "@unimolecule/utils":
         specifier: workspace:*
-        version: link:../../packages/utils
+        version: link:../utils
       lru-cache:
         specifier: ^11.5.1
         version: 11.5.1
@@ -433,6 +433,31 @@ importers:
         version: 4.1.9(@types/node@26.0.1)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.22.4)(yaml@2.9.0))
 
   packages/canon:
+    devDependencies:
+      "@types/node":
+        specifier: "catalog:"
+        version: 26.0.1
+      "@unconfig/ts-config":
+        specifier: catalog:dx
+        version: 0.1.11
+      tsdown:
+        specifier: catalog:dx
+        version: 0.22.3(tsx@4.22.4)(typescript@6.0.3)
+      typescript:
+        specifier: "catalog:"
+        version: 6.0.3
+      vitest:
+        specifier: catalog:test
+        version: 4.1.9(@types/node@26.0.1)(jsdom@29.1.1)(vite@8.1.0(@types/node@26.0.1)(esbuild@0.28.1)(jiti@2.6.1)(tsx@4.22.4)(yaml@2.9.0))
+
+  packages/monorepo-tsconfig-paths:
+    dependencies:
+      "@unimolecule/utils":
+        specifier: workspace:*
+        version: link:../utils
+      lru-cache:
+        specifier: ^11.5.1
+        version: 11.5.1
     devDependencies:
       "@types/node":
         specifier: "catalog:"
