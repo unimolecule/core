@@ -2,6 +2,7 @@
   "name": "@unimolecule/monorepo-tsconfig-paths",
   "type": "module",
   "version": "0.0.0",
+  "private": true,
   "author": "i7eo",
   "license": "MIT",
   "exports": {
