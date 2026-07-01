@@ -10,6 +10,20 @@ section: "introduction"
 
 <!-- markdownlint-enable MD025 -->
 
+## 2026-07-01
+
+**@unimolecule/canon** `v0.1.2`
+
+- use node shims in node-only bundler
+
+**@unimolecule/oh-my-fetch** `v0.1.2`
+
+- use node shims in node-only bundler
+
+**@unimolecule/utils** `v0.1.2`
+
+- use node shims in node-only bundler
+
 ## 2026-06-30
 
 **@unimolecule/canon** `v0.1.1`
