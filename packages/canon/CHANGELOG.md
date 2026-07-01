@@ -1,5 +1,11 @@
 # @unimolecule/canon
 
+## 0.1.3
+
+### Patch Changes
+
+- [`9632607`](https://github.com/unimolecule/core/commit/9632607dc7f720271b419e096eb331ecdd0f9155) Thanks [@i7eo](https://github.com/i7eo)! - generate d.ts for status-codes
+
 ## 0.1.2
 
 ### Patch Changes
