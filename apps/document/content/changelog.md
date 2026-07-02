@@ -12,6 +12,10 @@ section: "introduction"
 
 ## 2026-07-02
 
+**@unimolecule/utils** `v0.1.4`
+
+- feat disk & memory check
+
 **@unimolecule/utils** `v0.1.3`
 
 - refactor output-entry-builder, support `entries`

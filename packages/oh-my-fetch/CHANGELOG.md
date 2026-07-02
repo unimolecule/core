@@ -1,5 +1,12 @@
 # @unimolecule/oh-my-fetch
 
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [[`3c763d2`](https://github.com/unimolecule/core/commit/3c763d2197859402adde20764d7e02a870690272)]:
+  - @unimolecule/utils@0.1.4
+
 ## 0.1.5
 
 ### Patch Changes
