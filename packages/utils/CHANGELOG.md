@@ -1,5 +1,11 @@
 # @unimolecule/utils
 
+## 0.1.3
+
+### Patch Changes
+
+- [`ba3051f`](https://github.com/unimolecule/core/commit/ba3051f453af11a1091eeee0d1cbf34d15fc298a) Thanks [@i7eo](https://github.com/i7eo)! - refactor output-entry-builder, support `entries`
+
 ## 0.1.2
 
 ### Patch Changes

@@ -12,6 +12,12 @@ section: "introduction"
 
 <!-- CHANGELOG:INSERT -->
 
+## 2026-07-02
+
+**@unimolecule/utils** `v0.1.3`
+
+- refactor output-entry-builder, support `entries`
+
 ## 2026-07-01
 
 **@unimolecule/oh-my-fetch** `v0.1.4`
