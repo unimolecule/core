@@ -16,6 +16,7 @@ describe("index exports", () => {
       getLocalhostAddress: expect.any(Function),
       pathExists: expect.any(Function),
       pathExistsSync: expect.any(Function),
+      outputEntryBuilder: expect.any(Function),
       require: expect.any(Function),
       unifiedSpawn: expect.any(Function),
       unifiedSpawnAsync: expect.any(Function),

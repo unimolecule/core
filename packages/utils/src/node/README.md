@@ -104,28 +104,41 @@ const hosts = getLocalhostAddress();
 console.log(hosts);
 ```
 
+Build tsdown entries from a source directory:
+
+```ts
+import { outputEntryBuilder } from "@unimolecule/utils/node/output-entry-builder";
+
+export default {
+  entry: outputEntryBuilder("./src", {
+    entries: "index",
+  }),
+};
+```
+
 ## API
 
-| Export                                         | Description                                                               |
-| ---------------------------------------------- | ------------------------------------------------------------------------- |
-| `appExists(app, options?)`                     | Async PATH probe for an executable app.                                   |
-| `appExistsSync(app, options?)`                 | Sync PATH probe for an executable app.                                    |
-| `checkProcessDiskAccess(path?)`                | Verifies read/write access for a path, defaulting to `process.cwd()`.     |
-| `executeCommand(command, args?, options?)`     | Runs a command and resolves exit details when it succeeds.                |
-| `executeCommandSync(command, args?, options?)` | Sync command runner with the same success/error behavior.                 |
-| `formatPath(path)`                             | Converts backslash separators to `/` while leaving Unix paths unchanged.  |
-| `createProcessGracefulExit(logger?)`           | Creates isolated process signal registration and shutdown helpers.        |
-| `exitSignals`                                  | Supported graceful shutdown signals: `SIGINT`, `SIGQUIT`, `SIGTERM`.      |
-| `getLocalhostAddress()`                        | Returns non-internal IPv4 addresses plus `[::]`, with duplicates removed. |
-| `getPackages(cwd?)`                            | Async export from `@manypkg/get-packages`.                                |
-| `getPackagesSync(cwd?)`                        | Sync export from `@manypkg/get-packages`.                                 |
-| `pathExists(path)`                             | Async `fs.access` existence check.                                        |
-| `pathExistsSync(path)`                         | Sync `fs.accessSync` existence check.                                     |
-| `require`                                      | `createRequire(import.meta.url)` for ESM modules that need Node require.  |
-| `unifiedSpawn(command, args?, options?)`       | Cross-platform `spawn` wrapper.                                           |
-| `unifiedSpawnAsync(command, args?, options?)`  | Promise wrapper resolving the child close code.                           |
-| `unifiedSpawnSync(command, args?, options?)`   | Cross-platform `spawnSync` wrapper.                                       |
-| `userHome`                                     | Current `os.homedir()` value.                                             |
+| Export                                         | Description                                                                               |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `appExists(app, options?)`                     | Async PATH probe for an executable app.                                                   |
+| `appExistsSync(app, options?)`                 | Sync PATH probe for an executable app.                                                    |
+| `checkProcessDiskAccess(path?)`                | Verifies read/write access for a path, defaulting to `process.cwd()`.                     |
+| `executeCommand(command, args?, options?)`     | Runs a command and resolves exit details when it succeeds.                                |
+| `executeCommandSync(command, args?, options?)` | Sync command runner with the same success/error behavior.                                 |
+| `formatPath(path)`                             | Converts backslash separators to `/` while leaving Unix paths unchanged.                  |
+| `createProcessGracefulExit(logger?)`           | Creates isolated process signal registration and shutdown helpers.                        |
+| `exitSignals`                                  | Supported graceful shutdown signals: `SIGINT`, `SIGQUIT`, `SIGTERM`.                      |
+| `getLocalhostAddress()`                        | Returns non-internal IPv4 addresses plus `[::]`, with duplicates removed.                 |
+| `getPackages(cwd?)`                            | Async export from `@manypkg/get-packages`.                                                |
+| `getPackagesSync(cwd?)`                        | Sync export from `@manypkg/get-packages`.                                                 |
+| `outputEntryBuilder(rootDir, options?)`        | Builds tsdown entry objects by scanning files; `entries: "index"` keeps only index files. |
+| `pathExists(path)`                             | Async `fs.access` existence check.                                                        |
+| `pathExistsSync(path)`                         | Sync `fs.accessSync` existence check.                                                     |
+| `require`                                      | `createRequire(import.meta.url)` for ESM modules that need Node require.                  |
+| `unifiedSpawn(command, args?, options?)`       | Cross-platform `spawn` wrapper.                                                           |
+| `unifiedSpawnAsync(command, args?, options?)`  | Promise wrapper resolving the child close code.                                           |
+| `unifiedSpawnSync(command, args?, options?)`   | Cross-platform `spawnSync` wrapper.                                                       |
+| `userHome`                                     | Current `os.homedir()` value.                                                             |
 
 ## Runtime Notes
 

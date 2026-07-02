@@ -104,28 +104,41 @@ const hosts = getLocalhostAddress();
 console.log(hosts);
 ```
 
+从源码目录生成 tsdown entries：
+
+```ts
+import { outputEntryBuilder } from "@unimolecule/utils/node/output-entry-builder";
+
+export default {
+  entry: outputEntryBuilder("./src", {
+    entries: "index",
+  }),
+};
+```
+
 ## API
 
-| Export                                         | 说明                                                            |
-| ---------------------------------------------- | --------------------------------------------------------------- |
-| `appExists(app, options?)`                     | 异步探测 PATH 中是否存在可执行命令。                            |
-| `appExistsSync(app, options?)`                 | 同步探测 PATH 中是否存在可执行命令。                            |
-| `checkProcessDiskAccess(path?)`                | 验证路径读写权限，默认使用 `process.cwd()`。                    |
-| `executeCommand(command, args?, options?)`     | 执行命令，成功时返回退出信息。                                  |
-| `executeCommandSync(command, args?, options?)` | 同步命令执行器，行为与异步版本一致。                            |
-| `formatPath(path)`                             | 将反斜杠路径分隔符转换为 `/`，Unix 路径保持不变。               |
-| `createProcessGracefulExit(logger?)`           | 创建隔离的进程信号注册和 shutdown helper。                      |
-| `exitSignals`                                  | 支持的 graceful shutdown 信号：`SIGINT`、`SIGQUIT`、`SIGTERM`。 |
-| `getLocalhostAddress()`                        | 返回非 internal IPv4 地址和 `[::]`，并去重。                    |
-| `getPackages(cwd?)`                            | 从 `@manypkg/get-packages` 直接导出的异步函数。                 |
-| `getPackagesSync(cwd?)`                        | 从 `@manypkg/get-packages` 直接导出的同步函数。                 |
-| `pathExists(path)`                             | 异步 `fs.access` 存在性检查。                                   |
-| `pathExistsSync(path)`                         | 同步 `fs.accessSync` 存在性检查。                               |
-| `require`                                      | 给 ESM 模块使用的 `createRequire(import.meta.url)`。            |
-| `unifiedSpawn(command, args?, options?)`       | 跨平台 `spawn` wrapper。                                        |
-| `unifiedSpawnAsync(command, args?, options?)`  | Promise wrapper，解析 child process close code。                |
-| `unifiedSpawnSync(command, args?, options?)`   | 跨平台 `spawnSync` wrapper。                                    |
-| `userHome`                                     | 当前 `os.homedir()` 值。                                        |
+| Export                                         | 说明                                                                   |
+| ---------------------------------------------- | ---------------------------------------------------------------------- |
+| `appExists(app, options?)`                     | 异步探测 PATH 中是否存在可执行命令。                                   |
+| `appExistsSync(app, options?)`                 | 同步探测 PATH 中是否存在可执行命令。                                   |
+| `checkProcessDiskAccess(path?)`                | 验证路径读写权限，默认使用 `process.cwd()`。                           |
+| `executeCommand(command, args?, options?)`     | 执行命令，成功时返回退出信息。                                         |
+| `executeCommandSync(command, args?, options?)` | 同步命令执行器，行为与异步版本一致。                                   |
+| `formatPath(path)`                             | 将反斜杠路径分隔符转换为 `/`，Unix 路径保持不变。                      |
+| `createProcessGracefulExit(logger?)`           | 创建隔离的进程信号注册和 shutdown helper。                             |
+| `exitSignals`                                  | 支持的 graceful shutdown 信号：`SIGINT`、`SIGQUIT`、`SIGTERM`。        |
+| `getLocalhostAddress()`                        | 返回非 internal IPv4 地址和 `[::]`，并去重。                           |
+| `getPackages(cwd?)`                            | 从 `@manypkg/get-packages` 直接导出的异步函数。                        |
+| `getPackagesSync(cwd?)`                        | 从 `@manypkg/get-packages` 直接导出的同步函数。                        |
+| `outputEntryBuilder(rootDir, options?)`        | 扫描文件生成 tsdown entry 对象；`entries: "index"` 只保留 index 文件。 |
+| `pathExists(path)`                             | 异步 `fs.access` 存在性检查。                                          |
+| `pathExistsSync(path)`                         | 同步 `fs.accessSync` 存在性检查。                                      |
+| `require`                                      | 给 ESM 模块使用的 `createRequire(import.meta.url)`。                   |
+| `unifiedSpawn(command, args?, options?)`       | 跨平台 `spawn` wrapper。                                               |
+| `unifiedSpawnAsync(command, args?, options?)`  | Promise wrapper，解析 child process close code。                       |
+| `unifiedSpawnSync(command, args?, options?)`   | 跨平台 `spawnSync` wrapper。                                           |
+| `userHome`                                     | 当前 `os.homedir()` 值。                                               |
 
 ## 运行时说明
 

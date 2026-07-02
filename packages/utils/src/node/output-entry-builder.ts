@@ -10,8 +10,11 @@ type EntryIgnore =
       isDirectory: boolean;
     }) => boolean);
 
+type EntryMode = "all" | "index";
+
 interface ScanEntryOptions {
   cwd?: string;
+  entries?: EntryMode;
   extensions?: readonly string[];
   ignore?: readonly EntryIgnore[];
 }
@@ -25,6 +28,7 @@ export function outputEntryBuilder(
   options: ScanEntryOptions = {},
 ): Record<string, string> {
   const cwd = options.cwd ?? process.cwd();
+  const entryMode = options.entries ?? "all";
   const extensions = options.extensions ?? [".ts"];
   const ignore = options.ignore ?? [];
   const root = resolve(cwd, rootDir);
@@ -69,6 +73,13 @@ export function outputEntryBuilder(
 
       const extension = extensions.find((ext) => relativePath.endsWith(ext));
       if (!extension) {
+        continue;
+      }
+
+      if (
+        entryMode === "index" &&
+        !relativePath.endsWith(`index${extension}`)
+      ) {
         continue;
       }
 
