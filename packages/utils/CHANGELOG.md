@@ -1,5 +1,11 @@
 # @unimolecule/utils
 
+## 0.1.4
+
+### Patch Changes
+
+- [`3c763d2`](https://github.com/unimolecule/core/commit/3c763d2197859402adde20764d7e02a870690272) Thanks [@i7eo](https://github.com/i7eo)! - feat disk & memory check
+
 ## 0.1.3
 
 ### Patch Changes
