@@ -57,16 +57,18 @@ export function outputEntryBuilder(
   }
 
   function visit(dir: string) {
-    for (const item of readdirSync(dir)) {
-      const absolutePath = resolve(dir, item);
-      const stat = statSync(absolutePath);
+    for (const item of readdirSync(dir, { withFileTypes: true })) {
+      const absolutePath = resolve(dir, item.name);
       const relativePath = toPosixPath(relative(root, absolutePath));
+      const isDirectory = item.isSymbolicLink()
+        ? statSync(absolutePath).isDirectory()
+        : item.isDirectory();
 
-      if (shouldIgnore(relativePath, absolutePath, stat.isDirectory())) {
+      if (shouldIgnore(relativePath, absolutePath, isDirectory)) {
         continue;
       }
 
-      if (stat.isDirectory()) {
+      if (isDirectory) {
         visit(absolutePath);
         continue;
       }

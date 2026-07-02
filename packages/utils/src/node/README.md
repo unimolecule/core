@@ -82,17 +82,42 @@ Probe filesystem and path values:
 ```ts
 import {
   checkProcessDiskAccess,
+  checkProcessDiskUsage,
   formatPath,
+  getProcessDiskUsage,
   pathExists,
 } from "@unimolecule/utils/node";
 
 async function main() {
   await checkProcessDiskAccess(process.cwd());
+  const disk = await getProcessDiskUsage({ path: process.cwd() });
+  const diskCheck = await checkProcessDiskUsage({
+    maxUsedPercent: 0.9,
+    minAvailableBytes: 1024 * 1024 * 1024,
+  });
   await pathExists("package.json");
   formatPath(String.raw`C:\Users\i7eo\app`);
+  console.log({ disk, diskCheck });
 }
 
 main().catch(console.error);
+```
+
+Check process memory usage:
+
+```ts
+import {
+  checkProcessMemoryUsage,
+  getProcessMemoryUsage,
+} from "@unimolecule/utils/node";
+
+const memory = getProcessMemoryUsage();
+const memoryCheck = checkProcessMemoryUsage({
+  maxHeapUsedBytes: 150 * 1024 * 1024,
+  maxRssBytes: 512 * 1024 * 1024,
+});
+
+console.log({ memory, memoryCheck });
 ```
 
 Read local host addresses:
@@ -118,27 +143,31 @@ export default {
 
 ## API
 
-| Export                                         | Description                                                                               |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `appExists(app, options?)`                     | Async PATH probe for an executable app.                                                   |
-| `appExistsSync(app, options?)`                 | Sync PATH probe for an executable app.                                                    |
-| `checkProcessDiskAccess(path?)`                | Verifies read/write access for a path, defaulting to `process.cwd()`.                     |
-| `executeCommand(command, args?, options?)`     | Runs a command and resolves exit details when it succeeds.                                |
-| `executeCommandSync(command, args?, options?)` | Sync command runner with the same success/error behavior.                                 |
-| `formatPath(path)`                             | Converts backslash separators to `/` while leaving Unix paths unchanged.                  |
-| `createProcessGracefulExit(logger?)`           | Creates isolated process signal registration and shutdown helpers.                        |
-| `exitSignals`                                  | Supported graceful shutdown signals: `SIGINT`, `SIGQUIT`, `SIGTERM`.                      |
-| `getLocalhostAddress()`                        | Returns non-internal IPv4 addresses plus `[::]`, with duplicates removed.                 |
-| `getPackages(cwd?)`                            | Async export from `@manypkg/get-packages`.                                                |
-| `getPackagesSync(cwd?)`                        | Sync export from `@manypkg/get-packages`.                                                 |
-| `outputEntryBuilder(rootDir, options?)`        | Builds tsdown entry objects by scanning files; `entries: "index"` keeps only index files. |
-| `pathExists(path)`                             | Async `fs.access` existence check.                                                        |
-| `pathExistsSync(path)`                         | Sync `fs.accessSync` existence check.                                                     |
-| `require`                                      | `createRequire(import.meta.url)` for ESM modules that need Node require.                  |
-| `unifiedSpawn(command, args?, options?)`       | Cross-platform `spawn` wrapper.                                                           |
-| `unifiedSpawnAsync(command, args?, options?)`  | Promise wrapper resolving the child close code.                                           |
-| `unifiedSpawnSync(command, args?, options?)`   | Cross-platform `spawnSync` wrapper.                                                       |
-| `userHome`                                     | Current `os.homedir()` value.                                                             |
+| Export                                         | Description                                                                                      |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `appExists(app, options?)`                     | Async PATH probe for an executable app.                                                          |
+| `appExistsSync(app, options?)`                 | Sync PATH probe for an executable app.                                                           |
+| `checkProcessDiskAccess(path?)`                | Verifies read/write access for a path, defaulting to `process.cwd()`.                            |
+| `checkProcessDiskUsage(options?)`              | Reads disk usage and returns structured `checks` for used-percent and available-byte thresholds. |
+| `checkProcessMemoryUsage(options?)`            | Reads process memory usage and compares heap/RSS usage with optional byte thresholds.            |
+| `executeCommand(command, args?, options?)`     | Runs a command and resolves exit details when it succeeds.                                       |
+| `executeCommandSync(command, args?, options?)` | Sync command runner with the same success/error behavior.                                        |
+| `formatPath(path)`                             | Converts backslash separators to `/` while leaving Unix paths unchanged.                         |
+| `createProcessGracefulExit(logger?)`           | Creates isolated process signal registration and shutdown helpers.                               |
+| `exitSignals`                                  | Supported graceful shutdown signals: `SIGINT`, `SIGQUIT`, `SIGTERM`.                             |
+| `getLocalhostAddress()`                        | Returns non-internal IPv4 addresses plus `[::]`, with duplicates removed.                        |
+| `getPackages(cwd?)`                            | Async export from `@manypkg/get-packages`.                                                       |
+| `getPackagesSync(cwd?)`                        | Sync export from `@manypkg/get-packages`.                                                        |
+| `getProcessDiskUsage(options?)`                | Reads filesystem capacity, free, available, used bytes, and used percent for a path.             |
+| `getProcessMemoryUsage()`                      | Reads `process.memoryUsage()` with byte-oriented field names.                                    |
+| `outputEntryBuilder(rootDir, options?)`        | Builds tsdown entry objects by scanning files; `entries: "index"` keeps only index files.        |
+| `pathExists(path)`                             | Async `fs.access` existence check.                                                               |
+| `pathExistsSync(path)`                         | Sync `fs.accessSync` existence check.                                                            |
+| `require`                                      | `createRequire(import.meta.url)` for ESM modules that need Node require.                         |
+| `unifiedSpawn(command, args?, options?)`       | Cross-platform `spawn` wrapper.                                                                  |
+| `unifiedSpawnAsync(command, args?, options?)`  | Promise wrapper resolving the child close code.                                                  |
+| `unifiedSpawnSync(command, args?, options?)`   | Cross-platform `spawnSync` wrapper.                                                              |
+| `userHome`                                     | Current `os.homedir()` value.                                                                    |
 
 ## Runtime Notes
 

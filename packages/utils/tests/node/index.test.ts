@@ -6,7 +6,9 @@ describe("index exports", () => {
     expect(exports).toMatchObject({
       appExists: expect.any(Function),
       appExistsSync: expect.any(Function),
+      checkProcessDiskUsage: expect.any(Function),
       checkProcessDiskAccess: expect.any(Function),
+      checkProcessMemoryUsage: expect.any(Function),
       createProcessGracefulExit: expect.any(Function),
       executeCommand: expect.any(Function),
       executeCommandSync: expect.any(Function),
@@ -14,6 +16,8 @@ describe("index exports", () => {
       getPackages: expect.any(Function),
       getPackagesSync: expect.any(Function),
       getLocalhostAddress: expect.any(Function),
+      getProcessDiskUsage: expect.any(Function),
+      getProcessMemoryUsage: expect.any(Function),
       pathExists: expect.any(Function),
       pathExistsSync: expect.any(Function),
       outputEntryBuilder: expect.any(Function),

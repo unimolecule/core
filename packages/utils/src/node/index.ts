@@ -3,6 +3,7 @@ export * from "./disk";
 export * from "./execute-command";
 export * from "./format-path";
 export * from "./graceful-exit";
+export * from "./memory";
 export * from "./net";
 export * from "./output-entry-builder";
 export * from "./path-exists";

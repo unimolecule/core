@@ -82,17 +82,42 @@ gracefulExit.register(cleanup);
 ```ts
 import {
   checkProcessDiskAccess,
+  checkProcessDiskUsage,
   formatPath,
+  getProcessDiskUsage,
   pathExists,
 } from "@unimolecule/utils/node";
 
 async function main() {
   await checkProcessDiskAccess(process.cwd());
+  const disk = await getProcessDiskUsage({ path: process.cwd() });
+  const diskCheck = await checkProcessDiskUsage({
+    maxUsedPercent: 0.9,
+    minAvailableBytes: 1024 * 1024 * 1024,
+  });
   await pathExists("package.json");
   formatPath(String.raw`C:\Users\i7eo\app`);
+  console.log({ disk, diskCheck });
 }
 
 main().catch(console.error);
+```
+
+检查进程内存使用：
+
+```ts
+import {
+  checkProcessMemoryUsage,
+  getProcessMemoryUsage,
+} from "@unimolecule/utils/node";
+
+const memory = getProcessMemoryUsage();
+const memoryCheck = checkProcessMemoryUsage({
+  maxHeapUsedBytes: 150 * 1024 * 1024,
+  maxRssBytes: 512 * 1024 * 1024,
+});
+
+console.log({ memory, memoryCheck });
 ```
 
 读取本机地址：
@@ -123,6 +148,8 @@ export default {
 | `appExists(app, options?)`                     | 异步探测 PATH 中是否存在可执行命令。                                   |
 | `appExistsSync(app, options?)`                 | 同步探测 PATH 中是否存在可执行命令。                                   |
 | `checkProcessDiskAccess(path?)`                | 验证路径读写权限，默认使用 `process.cwd()`。                           |
+| `checkProcessDiskUsage(options?)`              | 读取磁盘使用情况，并返回使用率与可用字节阈值的结构化 `checks`。        |
+| `checkProcessMemoryUsage(options?)`            | 读取进程内存使用情况，并按可选 heap/RSS 字节阈值判断。                 |
 | `executeCommand(command, args?, options?)`     | 执行命令，成功时返回退出信息。                                         |
 | `executeCommandSync(command, args?, options?)` | 同步命令执行器，行为与异步版本一致。                                   |
 | `formatPath(path)`                             | 将反斜杠路径分隔符转换为 `/`，Unix 路径保持不变。                      |
@@ -131,6 +158,8 @@ export default {
 | `getLocalhostAddress()`                        | 返回非 internal IPv4 地址和 `[::]`，并去重。                           |
 | `getPackages(cwd?)`                            | 从 `@manypkg/get-packages` 直接导出的异步函数。                        |
 | `getPackagesSync(cwd?)`                        | 从 `@manypkg/get-packages` 直接导出的同步函数。                        |
+| `getProcessDiskUsage(options?)`                | 读取指定路径的文件系统容量、空闲、可用、已用字节和使用率。             |
+| `getProcessMemoryUsage()`                      | 读取 `process.memoryUsage()`，并返回以字节命名的字段。                 |
 | `outputEntryBuilder(rootDir, options?)`        | 扫描文件生成 tsdown entry 对象；`entries: "index"` 只保留 index 文件。 |
 | `pathExists(path)`                             | 异步 `fs.access` 存在性检查。                                          |
 | `pathExistsSync(path)`                         | 同步 `fs.accessSync` 存在性检查。                                      |

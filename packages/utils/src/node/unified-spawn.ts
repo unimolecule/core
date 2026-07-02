@@ -83,7 +83,20 @@ export function unifiedSpawnAsync(
 ) {
   return new Promise<number | null>((resolve, reject) => {
     const cp = unifiedSpawn(command, args, options);
-    cp.once("error", reject);
-    cp.once("close", (code) => resolve(code));
+    const cleanup = () => {
+      cp.off("error", onError);
+      cp.off("close", onClose);
+    };
+    const onError = (error: Error) => {
+      cleanup();
+      reject(error);
+    };
+    const onClose = (code: number | null) => {
+      cleanup();
+      resolve(code);
+    };
+
+    cp.once("error", onError);
+    cp.once("close", onClose);
   });
 }
